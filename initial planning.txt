@@ -1,0 +1,39 @@
+line-up app basic concept
+	customers can go in-store or online to get in line
+		lining up
+			in-store
+				scan a qr code either printed or displayed on ipad etc. in-store
+			online
+				go to the store's line-up page and click to lineup
+		before being put into a line
+			depending on the business they might require some personal information for preparation purposes
+			they might have a last-call, or max number of people per day etc, or if they run out of ingredients they may need to just close early etc. these settings could prevent people from lining up
+	once in line
+		they can see how many people are ahead of them, an estimation of how much time before they're up etc.
+		they'll get notifications if they opt in, to be told 5 min before, or when its their turn etc.
+
+
+functions
+	server
+		AI
+			predict how much time before a person will be up in line
+				including considering how some people exit the line / cancel last minute, typical timing for each appointment etc.
+			optimizing ordering appointments made before-hand and walk-ins
+	admin app for store staff to use
+		output a qr code for use-instore
+		set pre-lineup customer requirements
+			settings for personal information required before allowing lining up, or to allow lining up at all (eg. if a person has never been to this hospital before they have to fill out more stuff. if the person doesn't have an insurance card then they aren't allowed to line up at all etc.)
+		set time limit / spot limit etc.
+			settings for preventing people from lining up for other reasons such as the store is closing soon or they are out of spots etc.
+	user app for customers to use
+		lining up
+			going to a link or scanning a qr code brings them to the lineup page of the business
+			input required information pre-lineup
+			choose time/day you want to lineup for
+				use walk-in/appointment optimization
+					thoughts: take desired appointment time - estimated lineup time, put them in line at that time, if line goes faster insert a walk-in if time estimation permits. if line goes slower take out a walk-in unless that opens up too much time then they wait.
+		once lined up
+			get number of people ahead of you
+			get estimated time left
+			set notification preferences
+			get notifications
