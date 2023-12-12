@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -39,7 +39,19 @@ dependencies:
   #Map packages
   google_maps_flutter: ^2.5.0
   geolocator: ^10.1.0
+
+  #UI packages
   flutter_typeahead: ^5.0.1
+
+  #firebase packages
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.2
+  firebase_ui_auth: ^1.10.0
+
+  #login packages
+  google_sign_in: ^6.2.0
+  flutter_facebook_auth: ^6.0.3
+  sign_in_with_apple: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +79,9 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
