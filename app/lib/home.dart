@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lineup/components/maps/google_maps_widget.dart';
+import 'package:lineup/ui/components/maps/google_maps_widget.dart';
 
 class LineupHomePage extends StatefulWidget {
-  const LineupHomePage({super.key, required this.title});
-
-  final String title;
+  const LineupHomePage({super.key});
 
   @override
   State<LineupHomePage> createState() => _LineupHomePageState();
@@ -13,11 +11,7 @@ class LineupHomePage extends StatefulWidget {
 class _LineupHomePageState extends State<LineupHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+    return const Scaffold(
       body: GoogleMapsWidget(),
     );
   }

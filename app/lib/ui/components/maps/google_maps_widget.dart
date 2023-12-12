@@ -74,6 +74,8 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+
     return loading
         ? const Center(child: CircularProgressIndicator())
         : Stack(
@@ -87,11 +89,15 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
                 ),
                 myLocationEnabled: currentPosition == null ? false : true,
                 myLocationButtonEnabled: true,
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.7),
+                zoomControlsEnabled: false,
+                padding: EdgeInsets.only(top: screenSize.height * 0.1),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                padding: EdgeInsets.fromLTRB(
+                    screenSize.height * 0.02,
+                    screenSize.height * 0.04,
+                    screenSize.height * 0.02,
+                    screenSize.height * 0.04),
                 child: Form(
                   key: _formKey,
                   child: TypeAheadField<String>(
@@ -99,29 +105,23 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
                       return TextField(
                         controller: _autocompleteController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width),
-                            borderSide: BorderSide.none,
-                          ),
-                          prefixIcon: const Icon(Icons.search),
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.clear),
-                            onPressed: () {
-                              setState(() {
-                                _autocompleteController.clear();
-                              });
-                            },
-                          ),
-                          labelText: 'Search',
-                          filled: true,
-                          fillColor: Theme.of(context)
-                                  .inputDecorationTheme
-                                  .fillColor
-                                  ?.withOpacity(0.5) ??
-                              Colors.deepOrange[
-                                  100], // Default color if fillColor is null
-                        ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                  MediaQuery.of(context).size.width),
+                              // borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: const Icon(Icons.search),
+                            suffixIcon: IconButton(
+                              icon: const Icon(Icons.clear),
+                              onPressed: () {
+                                setState(() {
+                                  _autocompleteController.clear();
+                                });
+                              },
+                            ),
+                            labelText: 'Search',
+                            filled: true,
+                            fillColor: Colors.white54),
                       );
                     },
                     itemBuilder: (context, suggestion) {
@@ -130,7 +130,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
                       );
                     },
                     onSelected: (suggestion) {
-                      // Set the text of the TextField to the selected suggestion
                       setState(() {
                         _autocompleteController.text = suggestion;
                         print('Selected country: $suggestion');
